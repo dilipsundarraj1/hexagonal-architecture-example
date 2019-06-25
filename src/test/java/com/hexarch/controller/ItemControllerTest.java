@@ -60,6 +60,8 @@ public class ItemControllerTest {
     public void updateItem() throws Exception {
         Item item = new Item(100,"SKU001", "Iphone XR", 999.99);
         String itemBody = new ObjectMapper().writeValueAsString(item);
+        System.out.println(itemBody);
+        when(itemService.checkItemAvailable(any())).thenReturn(true);
         when(itemService.updateItem(any())).thenReturn(item);
 
         mockMvc.perform(put((ITEM_URL)).content(itemBody).contentType(MediaType.APPLICATION_JSON))
