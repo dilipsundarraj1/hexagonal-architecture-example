@@ -9,3 +9,4 @@ The technologies that are used in this project are listed below.
 
 ## Architecture
  
+![](https://github.com/dilipsundarraj1/hexagonal-architecture-example/blob/master/images/Hexagonal%20Architecturen%20-%20Item%20Service.png)
