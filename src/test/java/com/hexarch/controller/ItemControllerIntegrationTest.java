@@ -115,4 +115,23 @@ public class ItemControllerIntegrationTest
         assertEquals("000", deletedItem.getItemDescription()); // asserting to find out default item is returned.
     }
 
+    @Test
+    public void create_Item_badRequest(){
+
+
+        //given
+        Item item = new Item(100,null, "Iphone XR", 999.99);
+        String responseBody ="Please pass valid values for the following fields :[sku]";
+
+        //when
+        ResponseEntity<String> itemResponseEntity = testRestTemplate.postForEntity(ITEM_URL, item, String.class);
+
+        //then
+        assertEquals(HttpStatus.BAD_REQUEST, itemResponseEntity.getStatusCode());
+        assertEquals(responseBody, itemResponseEntity.getBody());
+
+
+    }
+
+
 }

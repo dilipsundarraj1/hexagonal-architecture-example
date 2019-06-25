@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static com.hexarch.constants.ItemConstants.SINGLE_ITEM;
 import static com.hexarch.constants.ItemConstants.ITEM_URL;
 
@@ -17,7 +19,7 @@ public class ItemController {
     ItemService itemService;
 
     @PostMapping(ITEM_URL)
-    public ResponseEntity<Item> saveItem(@RequestBody Item item){
+    public ResponseEntity<Item> saveItem(@RequestBody @Valid Item item){
         return  ResponseEntity.status(HttpStatus.CREATED).body(itemService.saveItem(item));
     }
 
@@ -34,7 +36,7 @@ public class ItemController {
 
     @DeleteMapping(SINGLE_ITEM)
     public ResponseEntity<Void> deleteItem(@PathVariable("id") Integer itemId){
-            itemService.deleteItem(itemId);
+        itemService.deleteItem(itemId);
         return  ResponseEntity.ok().build();
     }
 }
