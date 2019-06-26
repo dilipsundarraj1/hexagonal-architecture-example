@@ -1,4 +1,4 @@
-package com.hexarch.controller;
+package com.hexarch.service;
 
 import com.hexarch.domain.Item;
 import com.hexarch.jpa.ItemRepository;
